@@ -1065,6 +1065,13 @@ else
   }
 
 
+var countryResultsTable = document.getElementById("countryResults");
+countryResultsTable.children[0].children[0].children[0].innerText = candidate1.name;
+countryResultsTable.children[0].children[0].children[1].innerText = candidate1.totalVotes;
+countryResultsTable.children[0].children[0].children[2].innerText = candidate2.name;
+countryResultsTable.children[0].children[0].children[3].innerText = candidate2.totalVotes;
+countryResultsTable.children[0].children[0].children[5].innerText = winner;
+
 /* Display total votes in console */
 console.log("Total votes for " + candidate1.name + " = " + candidate1.totalVotes);
 console.log("Party color for " + candidate1.name + " = " + candidate1.partyColor);
@@ -1072,4 +1079,6 @@ console.log("Total votes for " + candidate2.name + " = " + candidate2.totalVotes
 console.log("Party color for " + candidate2.name + " = " + candidate2.partyColor);
 
 console.log("Winner is " + winner);
+
+
 /* End My Stuff */
