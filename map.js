@@ -6,6 +6,23 @@ var createPolitician = function (name,partyColor)
   politician.electionResults = null;
   politician.totalVotes = 0;
   politician.partyColor = partyColor;
+
+  politician.setStateResults = function (state)
+  {
+    if (candidate1.electionResults[state] > candidate2.electionResults[state] )
+      {
+        console.log(state + " = " + candidate1.name);
+      }
+    else if (candidate1.electionResults[state]  < candidate2.electionResults[state] )
+      {
+        console.log(state + " = " + candidate2.name);
+      }
+    else
+      {
+        console.log(state + " = " + "a draw");
+      }
+  };
+
   politician.countVotes = function()
   {
 
