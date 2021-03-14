@@ -1,11 +1,11 @@
 /* My Politician Stuff */
-var createPolitician = function (name)
+var createPolitician = function (name,partyColor)
 {
   var politician = {};
   politician.name = name;
   politician.electionResults = null;
   politician.totalVotes = 0;
-
+  politician.partyColor = partyColor;
   politician.countVotes = function()
   {
 
@@ -21,8 +21,8 @@ var createPolitician = function (name)
 };
 
 /* Create Politician Objects */
-var candidate1 = createPolitician("Bob");
-var candidate2 = createPolitician("Jane");
+var candidate1 = createPolitician("Bob","rgb[132, 17, 11]");
+var candidate2 = createPolitician("Jane","rgb[245, 141, 136]");
 
 /* Populate election results */
 candidate1.electionResults = [5,1,7,2,17,6,4,2,1,1,8,3,1,11,11,0,5,3,3,3,7,4,8,9,3,7,2,2,4,2,8,3,15,15,2,12,0,4,13,1,3,2,8,11,3,2,11,1,3,7,2];
@@ -50,7 +50,9 @@ else
 
 /* Display total votes in console */
 console.log("Total votes for " + candidate1.name + " = " + candidate1.totalVotes);
+console.log("Party color for " + candidate1.name + " = " + candidate1.partyColor);
 console.log("Total votes for " + candidate2.name + " = " + candidate2.totalVotes);
+console.log("Party color for " + candidate2.name + " = " + candidate2.partyColor);
 
 console.log("Winner is " + winner);
 /* End My Stuff */
