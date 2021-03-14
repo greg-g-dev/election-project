@@ -1,7 +1,20 @@
-var politician = {};
-politician.name = "";
-politician.electionResults = null;
-politician.totalVotes = 0;
+/* My Politician Stuff */
+var createPolitician = function (name, electionResults, totalVotes)
+{
+  var politician = {};
+  politician.name = name;
+  politician.electionResults = electionResults;
+  politician.totalVotes = totalVotes;
+
+  return politician;
+};
+
+
+var p1 = createPolitician("Bob","Win", 100);
+var p2 = createPolitician("Jane","Loose", 99);
+console.log(p1);
+console.log(p2);
+/* End My Stuff */
 
 /* Map Technology Copyright (C) 2011 DougX.net, used with permission */
 
@@ -23,6 +36,8 @@ var g_map_renderInterval;
 
 
 var initMap = function () {
+
+
   g_map_canvas = document.getElementById('map_canvas');
 
   if (!g_map_canvas.getContext) {
@@ -48,6 +63,7 @@ var initMap = function () {
 }
 
 var onMouseMove = function (e) {
+
   var x;
   var y;
 
