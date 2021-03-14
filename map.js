@@ -32,9 +32,27 @@ candidate2.electionResults = [4,2,4,4,38,3,3,1,2,28,8,1,3,9,0,6,1,5,5,1,3,7,8,1,
 candidate1.countVotes();
 candidate2.countVotes();
 
+var winner;
+
+if (candidate1.totalVotes > candidate2.totalVotes)
+  {
+    winner = candidate1.name;
+  }
+else if (candidate1.totalVotes < candidate2.totalVotes)
+  {
+    winner = candidate2.name;
+  }
+else
+  {
+    winner = "a draw";
+  }
+
+
 /* Display total votes in console */
 console.log("Total votes for " + candidate1.name + " = " + candidate1.totalVotes);
 console.log("Total votes for " + candidate2.name + " = " + candidate2.totalVotes);
+
+console.log("Winner is " + winner);
 /* End My Stuff */
 
 /* Map Technology Copyright (C) 2011 DougX.net, used with permission */
