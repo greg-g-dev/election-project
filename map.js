@@ -1042,6 +1042,15 @@ var setStateResults = function (state)
     console.log(stateWinner);
     theStates[state].rgbColor = stateWinner;
 
+    var stateInfoTable = documentGetElementById("stateResults");
+    var stateHeader = stateInfoTable.children[0].children[0];
+    var stateName = stateHeader.children[0];
+    var stateAbbr = stateHeader.children[1];
+    var result = stateInfoTable.children[1];
+    var resultCandidate1 = result.children[0];
+    var resultCandidate2 = result.children[1];
+    var resultWinner = result.children[2].children[1];
+
 };
 
 
