@@ -991,7 +991,7 @@ var onLoad = function () {
   initMap();
 };
 
-/* My Politician Stuff */
+/* Start of My Election Result Logic */
 var createPolitician = function (name,partyColor)
 {
   var politician = {};
@@ -1010,7 +1010,6 @@ var createPolitician = function (name,partyColor)
 
   };
 
-
   return politician;
 };
 
@@ -1028,38 +1027,61 @@ var setStateResults = function (state)
   var stateWinner;
   if (candidate1.electionResults[state] > candidate2.electionResults[state] )
     {
-      stateWinner = candidate1.partyColor;
+      stateWinnerColor= candidate1.partyColor;
+      stateWinnerName = candidate1.name;
     }
   else if (candidate1.electionResults[state]  < candidate2.electionResults[state] )
     {
-      stateWinner = candidate2.partyColor;
+      stateWinnerColor = candidate2.partyColor;
+      stateWinnerName = candidate2.name;
     }
   else
     {
-      stateWinner = [11, 32, 57];
+      stateWinnerColor = [11, 32, 57];
+      stateWinnerName = "tie";
     }
 
-    console.log(stateWinner);
-    theStates[state].rgbColor = stateWinner;
+    /* Set state winner party color */
+    theStates[state].rgbColor = stateWinnerColor;
 
-    var stateInfoTable = documentGetElementById("stateResults");
+    /* Create and set variables for state results table */
+    var stateInfoTable = document.getElementById("stateResults");
     var stateHeader = stateInfoTable.children[0].children[0];
     var stateName = stateHeader.children[0];
+    stateName.innerText = theStates[state].nameFull;
+
     var stateAbbr = stateHeader.children[1];
+    stateAbbr.innerText = theStates[state].nameAbbrev;
+
     var result = stateInfoTable.children[1];
     var resultCandidate1 = result.children[0];
-    var resultCandidate2 = result.children[1];
-    var resultWinner = result.children[2].children[1];
 
+    var resultCandidateName1 = resultCandidate1.children[0];
+    resultCandidateName1.innerText = candidate1.name;
+
+    var resultCandidateResult1 = resultCandidate1.children[1];
+    resultCandidateResult1.innerText = candidate1.electionResults[state]
+
+    var resultCandidate2 = result.children[1];
+    var resultCandidateName2 = resultCandidate2.children[0];
+    resultCandidateName2.innerText = candidate2.name;
+
+    var resultCandidateResult2 = resultCandidate2.children[1];
+    resultCandidateResult2.innerText = candidate2.electionResults[state]
+
+    var resultWinner = result.children[2].children[1];
+    resultWinner.innerText = stateWinnerName;
 };
 
 
-/* Count total votes */
+/* Count total U.S. votes */
 candidate1.countVotes();
 candidate2.countVotes();
 
+
 var winner;
 
+/* Determine U.S. winner */
 if (candidate1.totalVotes > candidate2.totalVotes)
   {
     winner = candidate1.name;
@@ -1070,7 +1092,7 @@ else if (candidate1.totalVotes < candidate2.totalVotes)
   }
 else
   {
-    winner = "a draw";
+    winner = "tie";
   }
 
 
@@ -1081,7 +1103,7 @@ countryResultsTable.children[0].children[0].children[2].innerText = candidate2.n
 countryResultsTable.children[0].children[0].children[3].innerText = candidate2.totalVotes;
 countryResultsTable.children[0].children[0].children[5].innerText = winner;
 
-/* Display total votes in console */
+/* Display total votes and winner in console */
 console.log("Total votes for " + candidate1.name + " = " + candidate1.totalVotes);
 console.log("Party color for " + candidate1.name + " = " + candidate1.partyColor);
 console.log("Total votes for " + candidate2.name + " = " + candidate2.totalVotes);
@@ -1090,4 +1112,4 @@ console.log("Party color for " + candidate2.name + " = " + candidate2.partyColor
 console.log("Winner is " + winner);
 
 
-/* End My Stuff */
+/* End My My Election Result Logic */
